@@ -2,7 +2,7 @@ package com.geonyeong.insurance.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class MyFile(
+data class GuideFile(
         @field:JsonProperty("guideId")
         var guideId: Long,
         @field:JsonProperty("guideNo")
