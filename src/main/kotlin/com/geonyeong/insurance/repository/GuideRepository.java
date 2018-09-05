@@ -1,6 +1,7 @@
 package com.geonyeong.insurance.repository;
 
 
+import com.geonyeong.insurance.dto.GuideDto;
 import com.geonyeong.insurance.entity.GuideEntity;
 import com.geonyeong.insurance.entity.KindCompanyEntity;
 import org.springframework.data.repository.CrudRepository;
