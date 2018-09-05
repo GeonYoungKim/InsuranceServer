@@ -2,33 +2,41 @@ package com.geonyeong.insurance.controller;
 
 import com.geonyeong.insurance.entity.GuideFileEntity;
 import com.geonyeong.insurance.service.FileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.inject.Inject;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/file/*")
 public class FileController {
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+
     @Inject
     private FileService fileService;
 
     @GetMapping(value = "/download")
-    public ResponseEntity<Object> download(@RequestParam("guideId") long guideId, @RequestParam("guideNo") long guideNo, @RequestParam("no") long no) {
+    public ResponseEntity<Object> download(@RequestParam("guideId") long guideId, @RequestParam("guideNo") long guideNo, @RequestParam("no") long no) throws IOException {
         System.out.println("다운로드");
-
+        final String FILE_PATH = resourceLoader.getResource("classpath:files").getURI().getPath()+"\\";
         GuideFileEntity guideFileEntity = fileService.selectOneFile(guideId, guideNo, no);
         File file;
         InputStreamResource resource;
         try {
-            file = new File(guideFileEntity.getRoute());
+            file = new File(FILE_PATH+guideFileEntity.getRoute());
             resource = new InputStreamResource(new FileInputStream(file));
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
