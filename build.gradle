@@ -42,21 +42,23 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+//	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//	compile('org.springframework.boot:spring-boot-starter-security')
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile group: 'org.apache.tomcat', name: 'jasper', version: '6.0.29'
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.0.4.RELEASE'
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 	compile group: 'javax.inject', name: 'javax.inject', version: '1'
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 	compile group: 'mysql', name: 'mysql-connector-java'
-//	compile('org.springframework.kafka:spring-kafka')
+	compile('org.springframework.kafka:spring-kafka')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('io.projectreactor:reactor-test')
-//	testCompile('org.springframework.security:spring-security-test')
+	testCompile('org.springframework.security:spring-security-test')
 }
