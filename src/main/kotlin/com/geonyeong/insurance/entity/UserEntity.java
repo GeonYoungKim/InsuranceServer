@@ -13,13 +13,10 @@ import java.util.Set;
 @Setter
 public class UserEntity {
     @Id
-    private String user_id;
-
-    private String password;
     private String username;
+    private String password;
     private String email;
-
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "username"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<RoleEntity> roles;
 }

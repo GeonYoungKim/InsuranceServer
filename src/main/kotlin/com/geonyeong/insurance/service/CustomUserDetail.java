@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Setter
 public class CustomUserDetail implements UserDetails {
 
+
     private UserEntity userEntity;
 
     @Override
