@@ -4,29 +4,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @Getter
 @Setter
-public class UserEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String user_id;
 
-    private @Column(name = "enabled") int enabled;
-    private @Column(name = "password") String password;
-    private @Column(name = "username") String username;
+    private String password;
+    private String username;
+    private String email;
 
-    @OneToMany(mappedBy = "userEntity")
-    private List<UserRoleEntity> userRoleEntities;
-
-    public UserEntity() {
-    }
-
-
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<RoleEntity> roles;
 }
