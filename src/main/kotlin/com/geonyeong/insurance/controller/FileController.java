@@ -10,9 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.inject.Inject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,14 +23,15 @@ public class FileController {
     @Autowired
     private ResourceLoader resourceLoader;
 
-    @Inject
+    @Autowired
     private FileService fileService;
 
     @GetMapping(value = "/download")
-    public ResponseEntity<Object> download(@RequestParam("guideId") long guideId, @RequestParam("guideNo") long guideNo, @RequestParam("no") long no) throws IOException {
+    public ResponseEntity<Object> download(@ModelAttribute GuideFileEntity guideFile) throws IOException {
+
         System.out.println("다운로드");
         final String FILE_PATH = resourceLoader.getResource("classpath:files").getURI().getPath()+"\\";
-        GuideFileEntity guideFileEntity = fileService.selectOneFile(guideId, guideNo, no);
+        GuideFileEntity guideFileEntity = fileService.selectOneFile(guideFile);
         File file;
         InputStreamResource resource;
         try {

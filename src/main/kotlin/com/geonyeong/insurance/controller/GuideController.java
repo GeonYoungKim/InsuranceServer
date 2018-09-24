@@ -4,9 +4,9 @@ import com.geonyeong.insurance.dto.InsulanceDto;
 import com.geonyeong.insurance.entity.KindCompanyEntity;
 import com.geonyeong.insurance.entity.KindEntity;
 import com.geonyeong.insurance.service.GuideService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @RestController
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/guide/*")
 public class GuideController {
 
-	@Inject
+	@Autowired
 	private GuideService guideService;
 
 	@GetMapping("/kind")

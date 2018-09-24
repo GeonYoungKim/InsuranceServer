@@ -10,7 +10,7 @@ public class FileService {
     @Autowired
     private GuideFileRepository guideFileRepository;
 
-    public GuideFileEntity selectOneFile(long guideId, long guideNo, long no) {
-        return guideFileRepository.findByGuideIdAndGuideNoAndNo(guideId,guideNo,no);
+    public GuideFileEntity selectOneFile(GuideFileEntity guideFileEntity) {
+        return guideFileRepository.findByGuideIdAndGuideNoAndNo(guideFileEntity.getGuideId(),guideFileEntity.getGuideNo(),guideFileEntity.getNo());
     }
 }

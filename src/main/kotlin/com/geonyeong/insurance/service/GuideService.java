@@ -41,7 +41,7 @@ public class GuideService {
         List<GuideContentEntity> guideContentEntityList = guideContentRepository.findByGuideId(kindCompanyId);
         List<GuideFileEntity> guideFileEntityList = guideFileRepository.findByGuideId(kindCompanyId);
         List<TipEntity> tipEntityList = tipRepository.findByGuideId(kindCompanyId);
-        KindCompanyEntity kindCompanyEntity = new KindCompanyEntity(kindCompanyId);
+        KindCompanyEntity kindCompanyEntity = new KindCompanyEntity(kindCompanyId,null,null,null);
 
         List<GuideDto> guideDtoList = new ArrayList<>();
         GuideDto guideDto;
