@@ -63,5 +63,12 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('io.projectreactor:reactor-test')
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+	testCompile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41"
 //	testCompile('org.springframework.security:spring-security-test')
+}
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
 }
