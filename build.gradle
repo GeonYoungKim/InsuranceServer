@@ -41,7 +41,7 @@ repositories {
 	mavenCentral()
 }
 springBoot {
-	mainClass = "com.geonyeong.insurance.Application"
+	mainClassName = "com.geonyeong.insurance.Application"
 }
 
 dependencies {
@@ -69,4 +69,9 @@ dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.12'
 	testCompile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41"
 //	testCompile('org.springframework.security:spring-security-test')
+}
+bootJar {
+	manifest {
+		attributes 'Start-Class': 'com.geonyeong.insurance.Application'
+	}
 }
