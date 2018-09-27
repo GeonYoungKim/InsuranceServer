@@ -32,8 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antMatchers("/guide/**").authenticated()
                 .anyRequest().permitAll().and().formLogin().permitAll();
-//        http.authorizeRequests().anyRequest().permitAll();
-
     }
 
     @Bean
