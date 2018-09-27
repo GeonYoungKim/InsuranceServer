@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antMatchers("/guide/**").authenticated()
                 .anyRequest().permitAll().and().formLogin().permitAll();
-//        젠킨스 빌드 테스트 3.1
+//        젠킨스 빌드 테스트 4
     }
 
     @Bean
