@@ -1,5 +1,6 @@
 package com.geonyeong.insurance.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 @Table(name = "user")
 @Getter
 @Setter
+@Builder
 public class UserEntity {
     @Id
     private String username;

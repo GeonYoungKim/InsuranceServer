@@ -1,1 +1,2 @@
 rootProject.name = 'insurance'
+org.gradle.daemon = false

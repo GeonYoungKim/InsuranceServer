@@ -1,5 +1,6 @@
 package com.geonyeong.insurance.controller;
 
+import com.geonyeong.insurance.dto.GuideFileDto;
 import com.geonyeong.insurance.entity.GuideFileEntity;
 import com.geonyeong.insurance.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,15 @@ public class FileController {
     private FileService fileService;
 
     @GetMapping(value = "/download")
-    public ResponseEntity<Object> download(@ModelAttribute GuideFileEntity guideFile) throws IOException {
+    public ResponseEntity<Object> download(@ModelAttribute GuideFileDto guideFile) throws IOException {
 
         System.out.println("다운로드");
-        final String FILE_PATH = resourceLoader.getResource("classpath:files").getURI().getPath()+"\\";
+        final String FILE_PATH = resourceLoader.getResource("classpath:files").getURI().getPath() + "\\";
         GuideFileEntity guideFileEntity = fileService.selectOneFile(guideFile);
         File file;
         InputStreamResource resource;
         try {
-            file = new File(FILE_PATH+guideFileEntity.getRoute());
+            file = new File(FILE_PATH + guideFileEntity.getRoute());
             resource = new InputStreamResource(new FileInputStream(file));
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));

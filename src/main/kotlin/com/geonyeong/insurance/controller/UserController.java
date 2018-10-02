@@ -1,5 +1,6 @@
 package com.geonyeong.insurance.controller;
 
+import com.geonyeong.insurance.dto.UserDto;
 import com.geonyeong.insurance.entity.UserEntity;
 import com.geonyeong.insurance.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,14 @@ public class UserController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @PostMapping(value = "/create")
-    public String create(@RequestBody UserEntity user){
+    public String create(@RequestBody UserDto user){
         String pwd = user.getPassword();
         user.setPassword(passwordEncoder.encode(pwd));
-        userRepository.save(user);
+        userRepository.save(UserEntity.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .email(user.getEmail())
+                .build());
         return "success add User";
     }
 
