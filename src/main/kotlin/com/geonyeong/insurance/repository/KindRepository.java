@@ -2,8 +2,8 @@ package com.geonyeong.insurance.repository;
 
 
 import com.geonyeong.insurance.entity.KindEntity;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface KindRepository extends CrudRepository<KindEntity,Long> {
+public interface KindRepository extends JpaRepository<KindEntity,Long> {
 
 }
