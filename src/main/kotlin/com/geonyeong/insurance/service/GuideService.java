@@ -5,6 +5,7 @@ import com.geonyeong.insurance.dto.InsulanceDto;
 import com.geonyeong.insurance.entity.*;
 import com.geonyeong.insurance.repository.*;
 import com.google.gson.Gson;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,21 +15,22 @@ import java.util.stream.Collectors;
 
 
 @Service
+@AllArgsConstructor
 public class GuideService {
-    @Autowired
-    private KindRepository kindRepository;
-    @Autowired
-    private KindCompanyRepository kindCompanyRepository;
-    @Autowired
-    private GuideRepository guideRepository;
-    @Autowired
-    private GuideContentRepository guideContentRepository;
-    @Autowired
-    private GuideFileRepository guideFileRepository;
-    @Autowired
-    private TipRepository tipRepository;
-    @Autowired
-    private Gson gson;
+
+    private final KindRepository kindRepository;
+
+    private final KindCompanyRepository kindCompanyRepository;
+
+    private final GuideRepository guideRepository;
+
+    private final GuideContentRepository guideContentRepository;
+
+    private final GuideFileRepository guideFileRepository;
+
+    private final TipRepository tipRepository;
+
+    private final Gson gson;
 
     public List<KindEntity> selectKind() {
         return (List<KindEntity>) kindRepository.findAll();

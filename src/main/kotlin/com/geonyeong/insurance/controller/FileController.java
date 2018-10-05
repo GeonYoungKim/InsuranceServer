@@ -3,6 +3,7 @@ package com.geonyeong.insurance.controller;
 import com.geonyeong.insurance.dto.GuideFileDto;
 import com.geonyeong.insurance.entity.GuideFileEntity;
 import com.geonyeong.insurance.service.FileService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.ResourceLoader;
@@ -19,13 +20,12 @@ import java.io.IOException;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/file/*")
+@AllArgsConstructor
 public class FileController {
 
-    @Autowired
-    private ResourceLoader resourceLoader;
+    private final ResourceLoader resourceLoader;
 
-    @Autowired
-    private FileService fileService;
+    private final FileService fileService;
 
     @GetMapping(value = "/download")
     public ResponseEntity<Object> download(@ModelAttribute GuideFileDto guideFile) throws IOException {

@@ -17,8 +17,7 @@ spring:
 logging:
   level:
     org:
-      hibernate:
+      hibernate: debug
         type:
           descriptor:
             sql: trace
-

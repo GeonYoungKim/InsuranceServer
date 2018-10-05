@@ -4,6 +4,7 @@ import com.geonyeong.insurance.dto.InsulanceDto;
 import com.geonyeong.insurance.entity.KindCompanyEntity;
 import com.geonyeong.insurance.entity.KindEntity;
 import com.geonyeong.insurance.service.GuideService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,10 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/guide/*")
+@AllArgsConstructor
 public class GuideController {
 
-	@Autowired
-	private GuideService guideService;
+	private final GuideService guideService;
 
 	@GetMapping("/kind")
 	public @ResponseBody List<KindEntity> kind() {
